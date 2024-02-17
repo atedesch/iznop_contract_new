@@ -1,3 +1,7 @@
+# Edit chain
+LINUX =
+MAC   =   "chain": "hardhat node --network hardhat --no-deploy",
+
 # 🏗 Scaffold-ETH 2
 
 <h4 align="center">
