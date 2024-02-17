@@ -15,7 +15,7 @@ import "hardhat/console.sol";
 contract YourContract {
 	// State Variables
 	address public immutable owner;
-	string public greeting = "Building Unstoppable Apps!!!";
+	string public greeting = "You are the first!";
 	bool public premium = false;
 	bool public prize = false;
 	uint256 public totalCounter = 0;
@@ -45,6 +45,10 @@ contract YourContract {
 		_;
 	}
 
+	function concatenate(string memory n_greeting, string memory _newGreeting) public pure returns (string memory) {
+    	return string(abi.encodePacked(n_greeting, " | ", _newGreeting));
+	}
+
 	/**
 	 * Function that allows anyone to change the state variable "greeting" of the contract and increase the counters
 	 *
@@ -57,9 +61,10 @@ contract YourContract {
 			_newGreeting,
 			msg.sender
 		);
+		
 
 		// Change state variables
-		greeting = _newGreeting;
+		greeting = concatenate(greeting, _newGreeting);
 		totalCounter += 1;
 		userGreetingCounter[msg.sender] += 1;
 		totalValue += msg.value;
