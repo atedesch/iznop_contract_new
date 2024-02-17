@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     YourContract: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
       abi: [
         {
           inputs: [
@@ -39,6 +39,12 @@ const deployedContracts = {
               indexed: false,
               internalType: "bool",
               name: "premium",
+              type: "bool",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "prize",
               type: "bool",
             },
             {
@@ -91,11 +97,29 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [],
+          name: "prize",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "string",
               name: "_newGreeting",
               type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "_fvalue",
+              type: "uint256",
             },
           ],
           name: "setGreeting",
@@ -106,6 +130,19 @@ const deployedContracts = {
         {
           inputs: [],
           name: "totalCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalValue",
           outputs: [
             {
               internalType: "uint256",

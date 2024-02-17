@@ -105,6 +105,21 @@ export class YourContract extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
+  totalValue(): BigInt {
+    let result = super.call("totalValue", "totalValue():(uint256)", []);
+
+    return result[0].toBigInt();
+  }
+
+  try_totalValue(): ethereum.CallResult<BigInt> {
+    let result = super.tryCall("totalValue", "totalValue():(uint256)", []);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
+  }
+
   userGreetingCounter(param0: Address): BigInt {
     let result = super.call(
       "userGreetingCounter",

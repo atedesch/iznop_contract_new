@@ -1,5 +1,5 @@
 
-ÍÅ[
+±©[
   {
     "inputs": [
       {
@@ -108,6 +108,19 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "totalValue",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -137,4 +150,4 @@
     "stateMutability": "payable",
     "type": "receive"
   }
-]Å
+]©

@@ -4,7 +4,7 @@
     mapping:
       abis:
         - file:
-            /: /ipfs/QmbJyhuDJ3njx5JzYatbAFCBtSjAqgqJZzA1cp5MmC7jEX
+            /: /ipfs/QmVwUvwTjqHn5293EEKZ4HB5exYoqq2H93nhiEKag2rV7o
           name: YourContract
       apiVersion: 0.0.6
       entities:
@@ -21,7 +21,7 @@
     network: localhost
     source:
       abi: YourContract
-      address: '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+      address: '0xa513E6E4b8f2a923D98304ec87F64353C4D5C853'
 description: Greetings
 repository: 'https://github.com/scaffold-eth/se-2/packages/subgraph/'
 schema:

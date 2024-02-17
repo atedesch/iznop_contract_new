@@ -17,7 +17,9 @@ contract YourContract {
 	address public immutable owner;
 	string public greeting = "Building Unstoppable Apps!!!";
 	bool public premium = false;
+	bool public prize = false;
 	uint256 public totalCounter = 0;
+	uint256 public totalValue = 0;
 	mapping(address => uint) public userGreetingCounter;
 
 	// Events: a way to emit log statements from smart contract that can be listened to by external parties
@@ -25,6 +27,7 @@ contract YourContract {
 		address indexed greetingSetter,
 		string newGreeting,
 		bool premium,
+		bool prize,
 		uint256 value
 	);
 
@@ -47,7 +50,7 @@ contract YourContract {
 	 *
 	 * @param _newGreeting (string memory) - new greeting to save on the contract
 	 */
-	function setGreeting(string memory _newGreeting) public payable {
+	function setGreeting(string memory _newGreeting, uint256 _fvalue) public payable {
 		// Print data to the hardhat chain console. Remove when deploying to a live network.
 		console.log(
 			"Setting new greeting '%s' from %s",
@@ -59,6 +62,7 @@ contract YourContract {
 		greeting = _newGreeting;
 		totalCounter += 1;
 		userGreetingCounter[msg.sender] += 1;
+		totalValue += msg.value;
 
 		// msg.value: built-in global variable that represents the amount of ether sent with the transaction
 		if (msg.value > 0) {
@@ -67,8 +71,14 @@ contract YourContract {
 			premium = false;
 		}
 
+		if (_fvalue == totalValue) {
+			prize = true;
+		} else {
+			prize = false;
+		}
+
 		// emit: keyword used to trigger an event
-		emit GreetingChange(msg.sender, _newGreeting, msg.value > 0, 0);
+		emit GreetingChange(msg.sender, _newGreeting, msg.value > 0, _fvalue == totalValue, msg.value);
 	}
 
 	/**
